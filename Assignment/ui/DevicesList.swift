@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct DevicesList: View {
+    @Binding var searchText:String
     let devices: [DeviceData]
     let onSelect: (DeviceData) -> Void // Callback for item selection
-
     var body: some View {
-        List(devices) { device in
+        List( searchText.isEmpty ? devices: devices.filter({ $0.name.lowercased().contains(searchText.lowercased()) })) { device in
             Button {
                 onSelect(device)
             } label: {
@@ -21,5 +21,6 @@ struct DevicesList: View {
                 }
             }
         }
+        .searchable(text: $searchText)
     }
 }

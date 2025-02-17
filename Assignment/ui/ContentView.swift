@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    private var viewModel = ContentViewModel()
+    @ObservedObject private var viewModel = ContentViewModel()
     @State private var path: [DeviceData] = [] // Navigation path
-
+    @State private var searchText:String = ""
     var body: some View {
         NavigationStack(path: $path) {
             Group {
                 if let computers = viewModel.data, !computers.isEmpty {
-                    DevicesList(devices: computers) { selectedComputer in
+                    DevicesList(searchText:$searchText,devices: computers) { selectedComputer in
                         viewModel.navigateToDetail(navigateDetail: selectedComputer)
                     }
                 } else {
                     ProgressView("Loading...")
                 }
             }
+        
             .onChange(of: viewModel.navigateDetail, {
                 let navigate = viewModel.navigateDetail
                 path.append(navigate!)
@@ -31,12 +32,13 @@ struct ContentView: View {
                 DetailView(device: computer)
             }
             .onAppear {
-                let navigate = viewModel.navigateDetail
-                if (navigate != nil) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        path.append(navigate!)
-                    }
-                }
+                viewModel.fetchAPI()
+//                let navigate = viewModel.navigateDetail
+//                if (navigate != nil) {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                        path.append(navigate!)
+//                    }
+//                }
             }
         }
     }
