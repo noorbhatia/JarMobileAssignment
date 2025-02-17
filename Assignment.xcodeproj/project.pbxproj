@@ -17,6 +17,7 @@
 		0C7ED3592D310121003DCAA1 /* DevicesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7ED3582D310121003DCAA1 /* DevicesList.swift */; };
 		0C7ED35D2D31014F003DCAA1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7ED35C2D31014F003DCAA1 /* DetailView.swift */; };
 		0C7ED3612D314E15003DCAA1 /* AssignmentText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7ED3602D314E15003DCAA1 /* AssignmentText.swift */; };
+		F27DA2E02D63372C0004E3EF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F27DA2DF2D63372C0004E3EF /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F27DA2E02D63372C0004E3EF /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 0C7046762D27F8900008440F;
+			packageReferences = (
+				F27DA2DE2D63372C0004E3EF /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 0C7046802D27F8900008440F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -415,6 +420,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F27DA2DE2D63372C0004E3EF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F27DA2DF2D63372C0004E3EF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F27DA2DE2D63372C0004E3EF /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C7046772D27F8900008440F /* Project object */;
 }
